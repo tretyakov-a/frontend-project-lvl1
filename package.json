@@ -29,5 +29,8 @@
     "@babel/core": "^7.6.2",
     "@babel/node": "^7.6.2",
     "@babel/preset-env": "^7.6.2"
+  },
+  "dependencies": {
+    "readline-sync": "^1.4.10"
   }
 }
