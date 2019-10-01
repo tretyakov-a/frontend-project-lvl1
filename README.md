@@ -11,6 +11,6 @@
 <h2>Brain even</h2>
 <p>
   <a href="https://asciinema.org/a/edtydMZvyBDnNW1MBwbuCnKFe" target="_blank">
-    <img src="https://asciinema.org/a/edtydMZvyBDnNW1MBwbuCnKFe.svg" />
+    Asciinema.
   </a>
 </p>
