@@ -8,6 +8,8 @@ brain-calc:
 	npx babel-node src/bin/brain-calc.js
 brain-gcd:
 	npx babel-node src/bin/brain-gcd.js
+brain-prog:
+	npx babel-node src/bin/brain-progression.js
 publish:
 	rm -R dist
 	npm publish --dry-run

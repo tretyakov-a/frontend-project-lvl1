@@ -28,3 +28,10 @@
     How to install and play.
   </a>
 </p>
+
+<h2>Brain progression</h2>
+<p>
+  <a href="https://asciinema.org/a/Wt5pSnYUvJVeWMXXzKFlWYLxS" target="_blank">
+    How to install and play.
+  </a>
+</p>
