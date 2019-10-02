@@ -21,3 +21,10 @@
     How to install and play.
   </a>
 </p>
+
+<h2>Brain gcd</h2>
+<p>
+  <a href="https://asciinema.org/a/5ArNdRHTZBWo4lMK5jSEnWFaz" target="_blank">
+    How to install and play.
+  </a>
+</p>
