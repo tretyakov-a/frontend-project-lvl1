@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import greeting from '..';
+import {} from '..';
+import { askForName } from '../engine';
 
-console.log('Welcome to the Brain Games');
-greeting();
+askForName();

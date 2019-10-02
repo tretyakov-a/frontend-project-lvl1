@@ -17,4 +17,7 @@
 
 <h2>Brain calc</h2>
 <p>
+  <a href="https://asciinema.org/a/C1TvCFzfPPlRZzotzYPyrtKQy" target="_blank">
+    How to install and play.
+  </a>
 </p>
