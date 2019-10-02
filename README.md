@@ -35,3 +35,10 @@
     How to install and play.
   </a>
 </p>
+
+<h2>Brain prime</h2>
+<p>
+  <a href="https://asciinema.org/a/tFc4jDZbwwqVHO77YU8uRkh6y" target="_blank">
+    How to install and play.
+  </a>
+</p>
