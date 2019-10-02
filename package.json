@@ -1,7 +1,10 @@
 {
   "name": "brain-games",
   "version": "1.0.0",
-  "description": "",
+  "description": "a set of console games",
+  "keywords": [
+    "games", "math"
+  ],
   "main": "index.js",
   "bin": {
     "brain-games": "dist/bin/brain-games.js",
