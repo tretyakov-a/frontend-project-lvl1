@@ -1,28 +1,20 @@
 import readlineSync from 'readline-sync';
 import { getQuestion, getAnswer } from './game-task';
-import { getRules, getTaskGenerator, getInputValidator } from './game';
 
 const amountOfCorrectAnswers = 3;
-let gameData;
 
-const askForName = () => {
-  const name = readlineSync.question('May I have your name? ');
-  console.log(`Hello, ${name}!`);
-  return name;
-};
-
-const gameCycle = (answersAcc) => {
+const gameCycle = (answersAcc, generateTask) => {
   if (answersAcc === amountOfCorrectAnswers) {
     return true;
   }
 
-  const task = getTaskGenerator(gameData)();
+  const task = generateTask();
   console.log(`Question: ${getQuestion(task)}`);
   const answer = readlineSync.question('Your answer: ');
 
-  if (getInputValidator(gameData)(answer) && getAnswer(task) === answer) {
+  if (getAnswer(task) === answer) {
     console.log('Correct!');
-    return gameCycle(answersAcc + 1);
+    return gameCycle(answersAcc + 1, generateTask);
   }
 
   console.log(
@@ -32,17 +24,21 @@ const gameCycle = (answersAcc) => {
   return false;
 };
 
-const runGame = (game) => {
-  gameData = game;
-
-  console.log(getRules(gameData));
-  const playerName = askForName();
-
-  if (gameCycle(0)) {
+const runGame = (gameDescription, generateTask) => {
+  console.log('Welcome to the Brain Games');
+  if (gameDescription) {
+    console.log(gameDescription);
+  }
+  const playerName = readlineSync.question('May I have your name? ');
+  console.log(`Hello, ${playerName}!`);
+  if (!generateTask) {
+    return;
+  }
+  if (gameCycle(0, generateTask)) {
     console.log(`Congratulations, ${playerName}!`);
   } else {
     console.log(`Let's try again, ${playerName}!`);
   }
 };
 
-export { runGame, askForName };
+export default runGame;

@@ -1,26 +1,24 @@
-import { random, isNumber, toInteger } from 'lodash';
-import { runGame } from '../engine';
+import { random } from '../utils';
+import runGame from '../engine';
 import { gameTask } from '../game-task';
-import { gameData } from '../game';
 
 const randomMax = 100;
 const maxDifference = 20;
 const progressionSize = 10;
 
-const gameRules = 'What number is missing in the progression?';
+const gameDescription = 'What number is missing in the progression?';
 
 const generateProgression = (emptyPos, diff, startNumber) => {
-  const iter = (progAcc, size, curr) => {
+  const iter = (progressionAcc, size, curr) => {
     if (size === progressionSize) {
-      return progAcc;
+      return progressionAcc;
     }
     const outNumber = size === emptyPos ? '..' : curr;
-    return iter(`${progAcc}${outNumber} `, size + 1, curr + diff);
+    return iter(`${progressionAcc}${outNumber} `, size + 1, curr + diff);
   };
   return iter('', 0, startNumber);
 };
 
-const isInputCorrect = (input) => isNumber(toInteger(input));
 const generateTask = () => {
   const emptyPos = random(progressionSize - 1);
   const diff = random(1)
@@ -33,8 +31,7 @@ const generateTask = () => {
 };
 
 const initGame = () => {
-  const game = gameData(gameRules, generateTask, isInputCorrect);
-  runGame(game);
+  runGame(gameDescription, generateTask);
 };
 
 export default initGame;

@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-import {} from '..';
-import { askForName } from '../engine';
+import runGame from '../engine';
 
-askForName();
+runGame();
