@@ -31,7 +31,7 @@
 
 <h2>Brain progression</h2>
 <p>
-  <a href="https://asciinema.org/a/Wt5pSnYUvJVeWMXXzKFlWYLxS" target="_blank">
+  <a href="https://asciinema.org/a/bH7ltrh4xXsCbkKk9u2M9o2cn" target="_blank">
     How to install and play.
   </a>
 </p>
