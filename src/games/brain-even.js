@@ -1,19 +1,20 @@
-import { random, isEven } from '../utils';
+import random from '../random';
 import runGame from '../engine';
-import { gameTask } from '../game-task';
+import { makeTask } from '../game-task';
 
 const randomMax = 100;
+const randomMin = 0;
+
+const isEven = (number) => number % 2 === 0;
 
 const gameDescription = 'Answer "yes" if the number is even, otherwise answer "no"';
 
 const generateTask = () => {
-  const question = random(randomMax);
+  const question = random(randomMin, randomMax);
   const answer = isEven(question) ? 'yes' : 'no';
-  return gameTask(question, answer);
+  return makeTask(question, answer);
 };
 
-const initGame = () => {
+export default () => {
   runGame(gameDescription, generateTask);
 };
-
-export default initGame;

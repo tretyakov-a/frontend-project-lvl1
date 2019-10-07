@@ -1,21 +1,27 @@
-import { random, calcGcd } from '../utils';
+import random from '../random';
 import runGame from '../engine';
-import { gameTask } from '../game-task';
+import { makeTask } from '../game-task';
 
 const randomMax = 100;
+const randomMin = 0;
+
+const calcGcd = (a, b) => {
+  if (b === 0) {
+    return a;
+  }
+  return calcGcd(b, a % b);
+};
 
 const gameDescription = 'Find the greatest common divisor of given numbers.';
 
 const generateTask = () => {
-  const num1 = random(randomMax);
-  const num2 = random(randomMax);
+  const num1 = random(randomMin, randomMax);
+  const num2 = random(randomMin, randomMax);
   const answer = calcGcd(num1, num2);
   const question = `${num1} ${num2}`;
-  return gameTask(question, String(answer));
+  return makeTask(question, String(answer));
 };
 
-const initGame = () => {
+export default () => {
   runGame(gameDescription, generateTask);
 };
-
-export default initGame;

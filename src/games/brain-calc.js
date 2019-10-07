@@ -1,8 +1,9 @@
-import { random } from '../utils';
+import random from '../random';
 import runGame from '../engine';
-import { gameTask } from '../game-task';
+import { makeTask } from '../game-task';
 
 const randomMax = 100;
+const randomMin = 0;
 const randomMaxForMul = 10;
 const operations = ['+', '-', '*'];
 
@@ -18,21 +19,19 @@ const performOperation = (operation, leftOperand, rightOperand) => {
     case '+': return leftOperand + rightOperand;
     case '-': return leftOperand - rightOperand;
     case '*': return leftOperand * rightOperand;
-    default: return 0;
+    default: return null;
   }
 };
 
 const generateTask = () => {
   const operation = getRandomOperation();
-  const leftOperand = operation === '*' ? random(randomMaxForMul) : random(randomMax);
-  const rightOperand = operation === '*' ? random(randomMaxForMul) : random(randomMax);
+  const leftOperand = operation === '*' ? random(randomMin, randomMaxForMul) : random(randomMin, randomMax);
+  const rightOperand = operation === '*' ? random(randomMin, randomMaxForMul) : random(randomMin, randomMax);
   const answer = performOperation(operation, leftOperand, rightOperand);
   const question = `${leftOperand} ${operation} ${rightOperand}`;
-  return gameTask(question, String(answer));
+  return makeTask(question, String(answer));
 };
 
-const initGame = () => {
+export default () => {
   runGame(gameDescription, generateTask);
 };
-
-export default initGame;

@@ -1,19 +1,32 @@
-import { random, isPrime } from '../utils';
+import random from '../random';
 import runGame from '../engine';
-import { gameTask } from '../game-task';
+import { makeTask } from '../game-task';
 
 const randomMax = 100;
+const randomMin = 0;
+
+const isPrime = (number) => {
+  const upperLimit = number / 2;
+  const iter = (acc) => {
+    if (acc > upperLimit) {
+      return true;
+    }
+    if (number % acc === 0) {
+      return false;
+    }
+    return iter(acc + 1);
+  };
+  return iter(2);
+};
 
 const gameDescription = 'Answer "yes" if given number is prime. Otherwise answer "no"';
 
 const generateTask = () => {
-  const rndNumber = random(randomMax);
-  const answer = isPrime(rndNumber) ? 'yes' : 'no';
-  return gameTask(rndNumber, answer);
+  const question = random(randomMin, randomMax);
+  const answer = isPrime(question) ? 'yes' : 'no';
+  return makeTask(question, answer);
 };
 
-const initGame = () => {
+export default () => {
   runGame(gameDescription, generateTask);
 };
-
-export default initGame;
