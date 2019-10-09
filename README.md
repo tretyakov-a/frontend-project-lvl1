@@ -3,35 +3,35 @@
 [![Build Status](https://travis-ci.org/tretyakov-a/frontend-project-lvl1.svg?branch=master)](https://travis-ci.org/tretyakov-a/frontend-project-lvl1)
 ## Setup
 ```
-$ npm install -g brain-games
+$ make install
 $ brain-games
 ```
 ## Brain even
-*Answer "yes" if the number is even, otherwise answer "no".*
+Answer "yes" if the number is even, otherwise answer "no".
 ```
 $ brain-even
 ```
 [How to install and play](https://asciinema.org/a/edtydMZvyBDnNW1MBwbuCnKFe)
 ## Brain calc
-*What is the result of the expression?*
+What is the result of the expression?
 ```
 $ brain-calc
 ```
 [How to install and play](https://asciinema.org/a/C1TvCFzfPPlRZzotzYPyrtKQy)
 ## Brain gcd
-*Find the greatest common divisor of given numbers.*
+Find the greatest common divisor of given numbers.
 ```
 $ brain-gcd
 ```
 [How to install and play](https://asciinema.org/a/5ArNdRHTZBWo4lMK5jSEnWFaz)
 ## Brain progression
-*What number is missing in the progression?*
+What number is missing in the progression?
 ```
 $ brain-progression
 ```
 [How to install and play](https://asciinema.org/a/bH7ltrh4xXsCbkKk9u2M9o2cn)
 ## Brain prime
-*Answer "yes" if given number is prime. Otherwise answer "no".*
+Answer "yes" if given number is prime. Otherwise answer "no".
 ```
 $ brain-prime
 ```
