@@ -4,20 +4,22 @@ import { getQuestion, getAnswer } from './game-task';
 const correctAnswersCount = 3;
 
 export default (gameDescription, generateTask) => {
-  const gameCycle = (answersAcc) => {
-    if (answersAcc === correctAnswersCount) {
+  const iter = (answersCounter) => {
+    if (answersCounter === correctAnswersCount) {
       return true;
     }
     const task = generateTask();
-    console.log(`Question: ${getQuestion(task)}`);
+    const question = getQuestion(task);
+    const correctAnswer = getAnswer(task);
+    console.log(`Question: ${question}`);
     const answer = readlineSync.question('Your answer: ');
-    if (getAnswer(task) === answer) {
+    if (answer === correctAnswer) {
       console.log('Correct!');
-      return gameCycle(answersAcc + 1);
+      return iter(answersCounter + 1);
     }
     console.log(
       `'${answer}' is wrong answer ;(.`,
-      `Correct answer was '${getAnswer(task)}'.`,
+      `Correct answer was '${correctAnswer}'.`,
     );
     return false;
   };
@@ -31,9 +33,9 @@ export default (gameDescription, generateTask) => {
   if (!generateTask) {
     return;
   }
-  if (gameCycle(0)) {
+  if (iter(0)) {
     console.log(`Congratulations, ${playerName}!`);
-  } else {
-    console.log(`Let's try again, ${playerName}!`);
+    return;
   }
+  console.log(`Let's try again, ${playerName}!`);
 };

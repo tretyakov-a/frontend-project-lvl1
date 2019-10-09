@@ -9,23 +9,24 @@ const progressionSize = 10;
 
 const gameDescription = 'What number is missing in the progression?';
 
-const generateProgression = (hidedElementPosition, diff, startNumber) => {
-  const iter = (progressionAcc, size, curr) => {
-    if (size === progressionSize) {
-      return progressionAcc;
+const generateProgression = (size, hidedElementPosition, diff, startElement) => {
+  const iter = (progressionAcc, sizeCounter) => {
+    if (sizeCounter === size) {
+      return progressionAcc.trim();
     }
-    const outNumber = size === hidedElementPosition ? '..' : curr;
-    return iter(`${progressionAcc}${outNumber} `, size + 1, curr + diff);
+    const currentElement = startElement + diff * sizeCounter;
+    const outputElement = sizeCounter === hidedElementPosition ? '..' : currentElement;
+    return iter(`${progressionAcc}${outputElement} `, sizeCounter + 1);
   };
-  return iter('', 0, startNumber);
+  return iter('', 0);
 };
 
 const generateTask = () => {
   const hidedElementPosition = random(0, progressionSize - 1);
   const diff = random(1, maxDifference);
-  const startNumber = random(randomMin, randomMax);
-  const question = generateProgression(hidedElementPosition, diff, startNumber);
-  const answer = startNumber + hidedElementPosition * diff;
+  const startElement = random(randomMin, randomMax);
+  const question = generateProgression(progressionSize, hidedElementPosition, diff, startElement);
+  const answer = startElement + hidedElementPosition * diff;
   return makeTask(question, String(answer));
 };
 

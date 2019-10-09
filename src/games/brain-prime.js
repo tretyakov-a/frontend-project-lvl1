@@ -7,14 +7,14 @@ const randomMin = 0;
 
 const isPrime = (number) => {
   const upperLimit = number / 2;
-  const iter = (acc) => {
-    if (acc > upperLimit) {
+  const iter = (divisor) => {
+    if (divisor > upperLimit) {
       return true;
     }
-    if (number % acc === 0) {
+    if (number % divisor === 0) {
       return false;
     }
-    return iter(acc + 1);
+    return iter(divisor + 1);
   };
   return iter(2);
 };
