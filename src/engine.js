@@ -16,6 +16,7 @@ export default (gameDescription, generateTask) => {
   const iter = (counter) => {
     if (counter === correctAnswersCount) {
       console.log(`Congratulations, ${playerName}!`);
+      return;
     }
     const task = generateTask();
     const question = getQuestion(task);
@@ -25,9 +26,10 @@ export default (gameDescription, generateTask) => {
     if (answer === correctAnswer) {
       console.log('Correct!');
       iter(counter + 1);
+    } else {
+      console.log(`'${answer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
+      console.log(`Let's try again, ${playerName}!`);
     }
-    console.log(`'${answer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
-    console.log(`Let's try again, ${playerName}!`);
   };
 
   iter(0);
