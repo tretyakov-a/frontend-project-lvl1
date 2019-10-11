@@ -4,26 +4,6 @@ import { getQuestion, getAnswer } from './game-task';
 const correctAnswersCount = 3;
 
 export default (gameDescription, generateTask) => {
-  const iter = (answersCounter) => {
-    if (answersCounter === correctAnswersCount) {
-      return true;
-    }
-    const task = generateTask();
-    const question = getQuestion(task);
-    const correctAnswer = getAnswer(task);
-    console.log(`Question: ${question}`);
-    const answer = readlineSync.question('Your answer: ');
-    if (answer === correctAnswer) {
-      console.log('Correct!');
-      return iter(answersCounter + 1);
-    }
-    console.log(
-      `'${answer}' is wrong answer ;(.`,
-      `Correct answer was '${correctAnswer}'.`,
-    );
-    return false;
-  };
-
   console.log('Welcome to the Brain Games');
   if (gameDescription) {
     console.log(gameDescription);
@@ -33,9 +13,22 @@ export default (gameDescription, generateTask) => {
   if (!generateTask) {
     return;
   }
-  if (iter(0)) {
-    console.log(`Congratulations, ${playerName}!`);
-    return;
-  }
-  console.log(`Let's try again, ${playerName}!`);
+  const iter = (counter) => {
+    if (counter === correctAnswersCount) {
+      console.log(`Congratulations, ${playerName}!`);
+    }
+    const task = generateTask();
+    const question = getQuestion(task);
+    const correctAnswer = getAnswer(task);
+    console.log(`Question: ${question}`);
+    const answer = readlineSync.question('Your answer: ');
+    if (answer === correctAnswer) {
+      console.log('Correct!');
+      iter(counter + 1);
+    }
+    console.log(`'${answer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
+    console.log(`Let's try again, ${playerName}!`);
+  };
+
+  iter(0);
 };
